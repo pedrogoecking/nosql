@@ -1,0 +1,85 @@
+Nome: Pedro Rocha Goecking Silva - 71768
+1) Insira no banco informações sobre você e seus colegas como nome, data de nascimento e disciplinas cursadas e em curso na PUC.
+
+db.Alunos.insert({
+	_id: ObjectId("507f191e810c19729de860ea"),
+	"name": "Pedro Rocha",
+	"birthday": ISODate("1993-25-08T22:00:00Z"),
+	"disciplinas": ["IBD","ILE","AQD", "NSQ"]
+	})
+
+db.Alunos.insert({
+	_id: ObjectId("507f360e810c18429df843ea"),
+	"name": "Eduardo Lima",
+	"birthday": ISODate("1983-11-12T15:30:00Z"),
+	"disciplinas": ["IBD","ILE","AQD", "NSQ"]
+	})
+
+db.Alunos.insert({	
+	_id: ObjectId("507f401e236c38426df552ea"),
+	"name": "Robert Carlos",
+	"birthday": ISODate("1984-10-05T09:15:00Z"),
+	"disciplinas": ["IBD","ILE","AQD", "NSQ"]
+	})
+
+2) Procure no banco a pessoa com a menor data de nascimento.
+
+db.Alunos.find().sort({birthday: 1}).limit(1)
+
+3) Atualize a sua nota na disciplina NoSQL para 5.
+
+3.1 Adicionando atributo nota para cada aluno:
+
+db.Alunos.update(
+	{
+		"name":"Pedro Rocha"
+	},
+	{
+		$set:{
+		"name": "Pedro Rocha",
+		"nota": [6, 7, 9, 8]
+		}
+	}
+)
+db.Alunos.update(
+	{
+		"name":"Eduardo Lima"
+	},
+	{
+		$set:{
+		"name": "Eduardo Lima",
+		"nota": [7, 5, 9, 9]
+		}
+	}
+)
+db.Alunos.update(
+	{
+		"name":"Robert Carlos"
+	},
+	{
+		$set:{
+		"name": "Robert Carlos",
+		"nota": [8, 4, 10, 8]
+		}
+	}
+)
+
+3.2 Atualizando minha nota na disciplina NoSQL:
+
+db.Alunos.update(
+	{
+		"name":"Pedro Rocha"
+	},
+	{
+		$set:{
+		"name": "Pedro Rocha",
+		"nota": [6, 7, 9, 5]
+		}
+	}
+)
+
+4) Apague um de seus colegas.
+
+db.Alunos.remove({
+	"name":"Eduardo Lima"
+	})

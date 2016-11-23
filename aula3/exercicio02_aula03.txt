@@ -1,0 +1,15 @@
+﻿-- LETRA A --
+
+var map = function(){emit(this.text[-2], 1);}
+
+var reduce = function(key, value){return Array.sum(value);}
+
+db.Vocabulary.mapReduce(map, reduce, {query: {text: /.*[a,e,i,o,u]r$/}, out: "Resultado"})
+
+-- LETRA B --
+
+var map = function(){if (this.text == undefined) return; for (var letra = 0; letra < this.text.length; letra++){ emit(this.text[letra], 1);}}
+
+var reduce = function(key, value){return Array.sum(value);}
+
+db.Vocabulary.mapReduce(map, reduce, {query:{}, out: "Resultado"})

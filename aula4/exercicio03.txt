@@ -1,0 +1,3 @@
+﻿db.Vocabulary.find({"text":"feliz",}).explain({"executionStats":1})
+
+db.Vocabulary.createIndex({"text":1})

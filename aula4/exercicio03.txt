@@ -1,3 +1,7 @@
-﻿db.Vocabulary.find({"text":"feliz",}).explain({"executionStats":1})
+﻿Pesquisa na coleção Vocabulary pelo termo "feliz": db.Vocabulary.find({"text":"feliz",}).explain({"executionStats":1})
 
-db.Vocabulary.createIndex({"text":1})
+A) totalDocsExamined: 291214
+B) executionTimeMillisEstimate: 70
+C) db.Vocabulary.createIndex({"text":1})
+D) totalDocsExamined: 1
+E) executionTimeMillisEstimate: 0

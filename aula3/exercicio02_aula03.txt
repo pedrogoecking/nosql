@@ -1,4 +1,5 @@
-﻿-- LETRA A --
+﻿-- EXERCÍCIO 1 --
+-- LETRA A --
 
 var map = function(){emit(this.text[-2], 1);}
 
@@ -13,3 +14,19 @@ var map = function(){if (this.text == undefined) return; for (var letra = 0; let
 var reduce = function(key, value){return Array.sum(value);}
 
 db.Vocabulary.mapReduce(map, reduce, {query:{}, out: "Resultado"})
+
+-- EXERCÍCIO 2 --
+
+db.Vocabulary.aggregate([
+     { $group: {
+            _id:{
+                    type:{type:"$type"}
+                },
+                    total:{$sum:1}
+                } },
+    {
+       $match: {
+      'total': {$gt: 1000}
+      }},
+     { $sort: {'total': 1} }
+  ])
